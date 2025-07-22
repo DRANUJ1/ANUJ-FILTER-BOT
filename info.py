@@ -20,38 +20,38 @@ BOT_TOKEN = environ.get('BOT_TOKEN', '')
 PORT = environ.get('PORT', '8082')
 
 # Owners 
-ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '5672857559').split()]
-OWNER_USERNAME = environ.get('OWNER_USERNAME', 'IM_JISSHU') # without @ or https://t.me/ 
-USERNAME = environ.get('USERNAME', "") # ADMIN USERNAME
+ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '5454951641').split()]
+OWNER_USERNAME = environ.get('OWNER_USERNAME', 'DOCTORXANUJ') # without @ or https://t.me/ 
+USERNAME = environ.get('USERNAME', "@ANUJVIRUS") # ADMIN USERNAME
 
 # Database Channel 
-CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '').split()]
+CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '1002481896248').split()]
 
 # ForceSub Channel & Log Channels
-AUTH_CHANNEL = int(environ.get('AUTH_CHANNEL', ''))
-AUTH_REQ_CHANNEL = int(environ.get('AUTH_REQ_CHANNEL', ''))
-LOG_CHANNEL = int(environ.get('LOG_CHANNEL', ''))
+AUTH_CHANNEL = int(environ.get('AUTH_CHANNEL', '1002796809199'))
+AUTH_REQ_CHANNEL = int(environ.get('AUTH_REQ_CHANNEL', '1002829933094'))
+LOG_CHANNEL = int(environ.get('LOG_CHANNEL', '-1002717319391'))
 LOG_API_CHANNEL = int(environ.get('LOG_API_CHANNEL', '')) 
 LOG_VR_CHANNEL = int(environ.get('LOG_VR_CHANNEL', ''))
 
 # MongoDB 
 DATABASE_URI = environ.get('DATABASE_URI', "")
-DATABASE_NAME = environ.get('DATABASE_NAME', "Cluster0")
+DATABASE_NAME = environ.get('DATABASE_NAME', "TNJDATABASE")
 
 # Files index database url
 FILES_DATABASE = environ.get('FILES_DATABASE', "")
-COLLECTION_NAME = environ.get('COLLECTION_NAME', 'jisshu')
+COLLECTION_NAME = environ.get('COLLECTION_NAME', 'TNJCOLLECTION')
 
 # Other Channel's
-SUPPORT_GROUP = int(environ.get('SUPPORT_GROUP', '-1001864434358'))
+SUPPORT_GROUP = int(environ.get('SUPPORT_GROUP', '-7581094364'))
 DELETE_CHANNELS = int(environ.get('DELETE_CHANNELS','0'))
-request_channel = environ.get('REQUEST_CHANNEL', '-1001864434358') 
+request_channel = environ.get('REQUEST_CHANNEL', '-1002796809199') 
 REQUEST_CHANNEL = int(request_channel) if request_channel and id_pattern.search(request_channel) else None
-MOVIE_UPDATE_CHANNEL = int(environ.get('MOVIE_UPDATE_CHANNEL', '-1001864434358')) 
+UPDATE_CHANNEL = int(environ.get('UPDATE_CHANNEL', '-1002779754485')) 
 
 # Added Link Here Not Id 
-SUPPORT_CHAT = environ.get('SUPPORT_CHAT', '')
-MOVIE_GROUP_LINK = environ.get('MOVIE_GROUP_LINK', '')
+SUPPORT_CHAT = environ.get('SUPPORT_CHAT', 'https://t.me/TNJCENTERBOT')
+GROUP_LINK = environ.get('GROUP_LINK', 'https://t.me/QuizTNJ')
 
 # Verification
 IS_VERIFY = is_enabled('IS_VERIFY', False)
@@ -59,28 +59,29 @@ TUTORIAL = environ.get("TUTORIAL", "https://t.me/")
 TUTORIAL_2 = environ.get("TUTORIAL_2", "https://t.me/")
 TUTORIAL_3 = environ.get("TUTORIAL_3", "https://t.me/")
 VERIFY_IMG = environ.get("VERIFY_IMG", "https://graph.org/file/1669ab9af68eaa62c3ca4.jpg")
-SHORTENER_API = environ.get("SHORTENER_API", "fcee6bbc628cfc61229a2d808e1b0ee3315a0f5e")
-SHORTENER_WEBSITE = environ.get("SHORTENER_WEBSITE", 'linkmonetizer.in')
-SHORTENER_API2 = environ.get("SHORTENER_API2", "fcee6bbc628cfc61229a2d808e1b0ee3315a0f5e")
-SHORTENER_WEBSITE2 = environ.get("SHORTENER_WEBSITE2", 'linkmonetizer.in')
-SHORTENER_API3 = environ.get("SHORTENER_API3", "fcee6bbc628cfc61229a2d808e1b0ee3315a0f5e")
-SHORTENER_WEBSITE3 = environ.get("SHORTENER_WEBSITE3", 'linkmonetizer.in')
+SHORTENER_API = environ.get("SHORTENER_API", "not now")
+SHORTENER_WEBSITE = environ.get("SHORTENER_WEBSITE", 'no here now')
+SHORTENER_API2 = environ.get("SHORTENER_API2", "not now")
+SHORTENER_WEBSITE2 = environ.get("SHORTENER_WEBSITE2", 'not now')
+SHORTENER_API3 = environ.get("SHORTENER_API3", "not now")
+SHORTENER_WEBSITE3 = environ.get("SHORTENER_WEBSITE3", 'not now')
 TWO_VERIFY_GAP = int(environ.get('TWO_VERIFY_GAP', "14400"))
 THREE_VERIFY_GAP = int(environ.get('THREE_VERIFY_GAP', "14400"))
 
-# Language & Quality & Season & Year
-LANGUAGES = ["hindi", "english", "telugu", "tamil", "kannada", "malayalam", "bengali", "marathi", "gujarati", "punjabi", "marathi"]
-QUALITIES = ["HdRip","web-dl" ,"bluray", "hdr", "fhd" , "240p", "360p", "480p", "540p", "720p", "960p", "1080p", "1440p", "2K", "2160p", "4k", "5K", "8K"]
-YEARS = [f'{i}' for i in range(2025, 2002,-1 )]
-SEASONS = [f'season {i}'for i in range (1 , 23)]
+# Batch & Subject & Chapter & Lecture & Type
+BATCH = ["1.0", "2.0", "3.0", "4.0", "5.0", "6.0"]
+SUBJECT = ["PHYSICS", "PHYSICAL CHEM", "ZOOLOGY", "BOTANY", "ORGANIC CHEM", "INORGANIC CHEM"]
+CHAPTER = ["CH-1", "CH-2", "CH-3", "CH-4", "CH-5", "CH-6", "CH-7", "CH-8", "CH-9", "CH-10", "CH-11", "CH-12", "CH-13", "CH-14", "CH-15", "CH-16", "CH-17"]
+LECTURE = ["L-1", "L-2", "L-3", "L-4", "L-5", "L-6", "L-7", "L-8", "L-9", "L-10", "L-11", "L-12", "L-13", "L-14", "L-15", "L-16", "L-17", "L-18", "L-19", "L-20"]
+TYPE = ["CLASSNOTES", "LECTURE", "DPP", "DPP QUIZ", "ASSIGNMENT", "HOMEWORK", "PLANNER", "SHORTS NOTES", "PYQS"]
 
 # Pictures And Reaction
-START_IMG = (environ.get('START_IMG', 'https://i.ibb.co/qpxpGmC/image.jpg https://i.ibb.co/DQ35zLZ/image.jpg')).split()
+START_IMG = (environ.get('START_IMG', 'https://ibb.co/RpGvhpD2 https://ibb.co/4nfkX2yf')).split()
 FORCESUB_IMG = environ.get('FORCESUB_IMG', 'https://i.ibb.co/ZNC1Hnb/ad3f2c88a8f2.jpg')
-REFER_PICS = (environ.get("REFER_PICS", "https://envs.sh/PSI.jpg")).split() 
-PAYPICS = (environ.get('PAYPICS', 'https://graph.org/file/f4db1c3ad3d9e38b328e6.jpg')).split()
-SUBSCRIPTION = (environ.get('SUBSCRIPTION', 'https://graph.org/file/9f3f47c690bbcc67633c2.jpg'))
-REACTIONS = ["👀", "😱", "🔥", "😍", "🎉", "🥰", "😇", "⚡"]
+REFER_PICS = (environ.get("REFER_PICS", "https://ibb.co/nvTq5V8")).split() 
+PAYPICS = (environ.get('PAYPICS', 'https://ibb.co/SXX4FJ8T')).split()
+SUBSCRIPTION = (environ.get('SUBSCRIPTION', 'https://ibb.co/RTM0znRF'))
+REACTIONS = ["👀", "😱", "🔥", "😍", "🎉", "🥰", "😇", "⚡" "❤️", "🫶", "🌱", "🩺", "🇮🇳", "🧡", "🩷", "💛", "🍔", "🍨", "🎂", "🥼"]
 
 
 #Other Funtions
@@ -88,7 +89,7 @@ FILE_AUTO_DEL_TIMER = int(environ.get('FILE_AUTO_DEL_TIMER', '600'))
 AUTO_FILTER = is_enabled('AUTO_FILTER', True)
 IS_PM_SEARCH = is_enabled('IS_PM_SEARCH', False)
 IS_SEND_MOVIE_UPDATE = is_enabled('IS_SEND_MOVIE_UPDATE', False) # Don't Change It ( If You Want To Turn It On Then Turn It On By Commands) We Suggest You To Make It Turn Off If You Are Indexing Files First Time.
-MAX_BTN = int(environ.get('MAX_BTN', '8'))
+MAX_BTN = int(environ.get('MAX_BTN', '10'))
 AUTO_DELETE = is_enabled('AUTO_DELETE', True)
 DELETE_TIME = int(environ.get('DELETE_TIME', 1200))
 IMDB = is_enabled('IMDB', False)
@@ -110,7 +111,7 @@ if 'DYNO' in environ:
     ON_HEROKU = True
 else:
     ON_HEROKU = False
-URL = environ.get("FQDN", "")
+URL = environ.get("URL", "")
 
 # Commands
 admin_cmds = [
