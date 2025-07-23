@@ -58,7 +58,7 @@ IS_VERIFY = is_enabled('IS_VERIFY', False)
 TUTORIAL = environ.get("TUTORIAL", "https://t.me/")
 TUTORIAL_2 = environ.get("TUTORIAL_2", "https://t.me/")
 TUTORIAL_3 = environ.get("TUTORIAL_3", "https://t.me/")
-VERIFY_IMG = environ.get("VERIFY_IMG", "https://graph.org/file/1669ab9af68eaa62c3ca4.jpg")
+VERIFY_IMG = environ.get("VERIFY_IMG", "https://ibb.co/271MRHBP")
 SHORTENER_API = environ.get("SHORTENER_API", "not now")
 SHORTENER_WEBSITE = environ.get("SHORTENER_WEBSITE", 'no here now')
 SHORTENER_API2 = environ.get("SHORTENER_API2", "not now")
@@ -120,7 +120,7 @@ admin_cmds = [
     "/remove_premium - Remove A User's Premium Status", 
     "/add_redeem - Generate A Redeem Code",
     "/refresh - Refresh Free Trail", 
-    "/set_muc - Set Movie Update Channel", 
+    "/set_muc - Set Lecture Update Channel", 
     "/pm_search_on - Enable PM Search", 
     "/pm_search_off - Disable PM Search",
     "/set_ads - Set Advertisements", 
