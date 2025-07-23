@@ -1,10 +1,10 @@
 import jinja2
 from info import URL, LOG_CHANNEL
 from utils import temp
-from Jisshu.bot import JisshuBot
-from Jisshu.util.human_readable import humanbytes
-from Jisshu.util.file_properties import get_file_ids
-from Jisshu.server.exceptions import InvalidHash
+from Anuj.bot import JisshuBot
+from Anuj.util.human_readable import humanbytes
+from Anuj.util.file_properties import get_file_ids
+from Anuj.server.exceptions import InvalidHash
 import urllib.parse
 import logging
 import aiohttp
