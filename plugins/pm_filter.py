@@ -360,29 +360,29 @@ async def lecture_search(client: Client, query: CallbackQuery):
 
     btn.append([
         InlineKeyboardButton(text="⋞ ʙᴀᴄᴋ ᴛᴏ ᴍᴀɪɴ ᴘᴀɢᴇ", callback_data=f"next_{req}_{key}_{orginal_offset}"),])
-    await query.message.edit_text(cap + links + js_ads, disable_web_page_preview=True, parse_mode=enums.ParseMode.HTML, reply_markup=InlineKeyboardMarkup(btn))
+    await query.message.edit_text(cap + links + TNJ_ads, disable_web_page_preview=True, parse_mode=enums.ParseMode.HTML, reply_markup=InlineKeyboardMarkup(btn))
     return
 
-@Client.on_callback_query(filters.regex(r"^years#"))
-async def years_cb_handler(client: Client, query: CallbackQuery):
+@Client.on_callback_query(filters.regex(r"^chapter#"))
+async def chapters_cb_handler(client: Client, query: CallbackQuery):
     _, key, offset, req = query.data.split("#")
     if int(req) != query.from_user.id:
         return await query.answer(script.ALRT_TXT, show_alert=True)
     btn  = []
-    for i in range(0, len(YEARS)-1, 2):
+    for i in range(0, len(CHAPTERS)-1, 2):
         btn.append([
             InlineKeyboardButton(
-                text=YEARS[i].title(),
-                callback_data=f"years_search#{YEARS[i].lower()}#{key}#0#{offset}#{req}"
+                text=CHAPTERS[i].title(),
+                callback_data=f"chapter_search#{CHAPTER[i].lower()}#{key}#0#{offset}#{req}"
             ),
             InlineKeyboardButton(
-                text=YEARS[i+1].title(),
-                callback_data=f"years_search#{YEARS[i+1].lower()}#{key}#0#{offset}#{req}"
+                text=CHAPTERS[i+1].title(),
+                callback_data=f"Chapters_search#{CHAPTERS[i+1].lower()}#{key}#0#{offset}#{req}"
             ),
         ])
     
     btn.append([InlineKeyboardButton(text="⋞ ʙᴀᴄᴋ ᴛᴏ ᴍᴀɪɴ ᴘᴀɢᴇ", callback_data=f"next_{req}_{key}_{offset}")])
-    await query.message.edit_text("<b>ɪɴ ᴡʜɪᴄʜ ʏᴇᴀʀ ᴅᴏ ʏᴏᴜ ᴡᴀɴᴛ, ᴄʜᴏᴏsᴇ ғʀᴏᴍ ʜᴇʀᴇ ↓↓</b>", reply_markup=InlineKeyboardMarkup(btn))
+    await query.message.edit_text("<b>ɪɴ ᴡʜɪᴄʜ chapters ᴅᴏ ʏᴏᴜ ᴡᴀɴᴛ, ᴄʜᴏᴏsᴇ ғʀᴏᴍ ʜᴇʀᴇ ↓↓</b>", reply_markup=InlineKeyboardMarkup(btn))
     return
 
 @Client.on_callback_query(filters.regex(r"^chapter_search#"))
