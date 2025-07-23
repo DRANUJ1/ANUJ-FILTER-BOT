@@ -19,8 +19,8 @@ class Database:
         self.req = mydb.requests
         self.mGrp = mydb.mGrp
         self.pmMode = mydb.pmMode
-        self.jisshu_ads_link = mydb.jisshu_ads_link
-        self.movies_update_channel = mydb.movies_update_channel
+        self.anuj_ads_link = mydb.anuj_ads_link
+        self.update_channel = mydb.update_channel
         self.botcol = mydb.botcol
 
 
@@ -370,19 +370,19 @@ class Database:
         await self.users.update_one({"id": user_id}, {"$set": user_data}, upsert=True)
             
      # JISSHU BOTS
-    async def jisshu_set_ads_link(self,link):
-        await self.jisshu_ads_link.update_one({} , {'$set': {'link': link}} , upsert=True)
+    async def abyh_set_ads_link(self,link):
+        await self.anuj_ads_link.update_one({} , {'$set': {'link': link}} , upsert=True)
         
-    async def jisshu_get_ads_link(self):
-        link = await self.jisshu_ads_link.find_one({})
+    async def anuj_get_ads_link(self):
+        link = await self.anuj_ads_link.find_one({})
         if link is not None:
             return link.get("link")
         else:
             return None
             
-    async def jisshu_del_ads_link(self):
+    async def anuj_del_ads_link(self):
         try: 
-            isDeleted = await self.jisshu_ads_link.delete_one({})
+            isDeleted = await self.anuj_ads_link.delete_one({})
             if isDeleted.deleted_count > 0:
                 return True
             else:
@@ -391,19 +391,19 @@ class Database:
             print(f"Got err in db set : {e}")
             return False
 
-    async def get_send_movie_update_status(self, bot_id):
+    async def get_send_update_status(self, bot_id):
         bot = await self.botcol.find_one({'id': bot_id})
-        if bot and bot.get('movie_update_feature'):
-            return bot['movie_update_feature']
+        if bot and bot.get('update_feature'):
+            return bot['update_feature']
         else:
-            return IS_SEND_MOVIE_UPDATE
+            return IS_SEND_UPDATE
 
-    async def update_send_movie_update_status(self, bot_id, enable):
+    async def update_send_update_status(self, bot_id, enable):
         bot = await self.botcol.find_one({'id': int(bot_id)})
         if bot:
-            await self.botcol.update_one({'id': int(bot_id)}, {'$set': {'movie_update_feature': enable}})
+            await self.botcol.update_one({'id': int(bot_id)}, {'$set': {'update_feature': enable}})
         else:
-            await self.botcol.insert_one({'id': int(bot_id), 'movie_update_feature': enable})            
+            await self.botcol.insert_one({'id': int(bot_id), 'update_feature': enable})            
             
     async def get_pm_search_status(self, bot_id):
         bot = await self.botcol.find_one({'id': bot_id})
@@ -419,14 +419,14 @@ class Database:
         else:
             await self.botcol.insert_one({'id': int(bot_id), 'bot_pm_search': enable})
             
-    async def movies_update_channel_id(self , id=None):
+    async def update_channel_id(self , id=None):
         if id is None:
-            myLinks = await self.movies_update_channel.find_one({})
+            myLinks = await self.update_channel.find_one({})
             if myLinks is not None:
                 return myLinks.get("id")
             else:
                 return None
-        return await self.movies_update_channel.update_one({} , {'$set': {'id': id}} , upsert=True)
+        return await self.update_channel.update_one({} , {'$set': {'id': id}} , upsert=True)
 
     async def reset_group_settings(self, id):
         await self.grp.update_one({'id': int(id)}, {'$set': {'settings': self.default}})
