@@ -13,14 +13,14 @@ def is_enabled(value, default):
         return default
     
 # Main
-SESSION = environ.get('SESSION', 'Media_search')
+SESSION = environ.get('SESSION', 'anuj_session')
 API_ID = int(environ.get('API_ID', ''))
 API_HASH = environ.get('API_HASH', '')
 BOT_TOKEN = environ.get('BOT_TOKEN', '')
 PORT = environ.get('PORT', '8082')
 
 # Owners 
-ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '5454951641').split()]
+ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '5454951641 5513858070').split()]
 OWNER_USERNAME = environ.get('OWNER_USERNAME', 'DOCTORXANUJ') # without @ or https://t.me/ 
 USERNAME = environ.get('USERNAME', "@ANUJVIRUS") # ADMIN USERNAME
 
