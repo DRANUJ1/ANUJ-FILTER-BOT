@@ -35,22 +35,22 @@ from plugins import web_server, check_expired_premium
 import pyrogram.utils
 import asyncio
 from pyrogram import idle
-from Jisshu.bot import JisshuBot
-from Jisshu.util.keepalive import ping_server
-from Jisshu.bot.clients import initialize_clients
+from Anuj.bot import JisshuBot
+from Anuj.util.keepalive import ping_server
+from Anuj.bot.clients import initialize_clients
 
 ppath = "plugins/*.py"
 files = glob.glob(ppath)
-JisshuBot.start()
+AnujBot.start()
 loop = asyncio.get_event_loop()
 
-pyrogram.utils.MIN_CHANNEL_ID = -1009147483647
+pyrogram.utils.MIN_CHANNEL_ID = -1002829933094
 
-async def Jisshu_start():
+async def Anuj_start():
     print('\n')
-    print('Credit - Telegram @JISSHU_BOTS')
-    bot_info = await JisshuBot.get_me()
-    JisshuBot.username = bot_info.username
+    print('Credit - Telegram @TNJANUJBOT')
+    bot_info = await AnujBot.get_me()
+    AnujBot.username = bot_info.username
     await initialize_clients()
     for name in files:
         with open(name) as a:
@@ -62,28 +62,28 @@ async def Jisshu_start():
             load = importlib.util.module_from_spec(spec)
             spec.loader.exec_module(load)
             sys.modules["plugins." + plugin_name] = load
-            print("JisshuBot Imported => " + plugin_name)
+            print("AnujBot Imported => " + plugin_name)
     if ON_HEROKU:
         asyncio.create_task(ping_server())
     b_users, b_chats = await db.get_banned()
     temp.BANNED_USERS = b_users
     temp.BANNED_CHATS = b_chats
     await Media.ensure_indexes()
-    me = await JisshuBot.get_me()
+    me = await AnujBot.get_me()
     temp.ME = me.id
     temp.U_NAME = me.username
     temp.B_NAME = me.first_name
     temp.B_LINK = me.mention
-    JisshuBot.username = '@' + me.username
-    JisshuBot.loop.create_task(check_expired_premium(JisshuBot))
+    AnujBot.username = '@' + me.username
+    AnujBot.loop.create_task(check_expired_premium(AnujBot))
     logging.info(f"{me.first_name} with for Pyrogram v{__version__} (Layer {layer}) started on {me.username}.")
     logging.info(script.LOGO)
     tz = pytz.timezone('Asia/Kolkata')
     today = date.today()
     now = datetime.now(tz)
     time = now.strftime("%H:%M:%S %p")
-    await JisshuBot.send_message(chat_id=LOG_CHANNEL, text=script.RESTART_TXT.format(me.mention, today, time))
-    await JisshuBot.send_message(chat_id=SUPPORT_GROUP, text=f"<b>{me.mention} ʀᴇsᴛᴀʀᴛᴇᴅ 🤖</b>")
+    await AnujBot.send_message(chat_id=LOG_CHANNEL, text=script.RESTART_TXT.format(me.mention, today, time))
+    await AnujBot.send_message(chat_id=SUPPORT_GROUP, text=f"<b>{me.mention} ʀᴇsᴛᴀʀᴛᴇᴅ 🤖</b>")
     app = web.AppRunner(await web_server())
     await app.setup()
     bind_address = "0.0.0.0"
@@ -93,6 +93,6 @@ async def Jisshu_start():
 
 if __name__ == '__main__':
     try:
-        loop.run_until_complete(Jisshu_start())
+        loop.run_until_complete(Anuj_start())
     except KeyboardInterrupt:
         logging.info('Service Stopped Bye 👋')
