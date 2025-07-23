@@ -8,14 +8,14 @@ async def set_muc_id(client, message):
     try:
         id = message.command[1]
         if id and str(id).startswith('-100') and len(str(id)) == 14:
-            is_suc = await db.movies_update_channel_id(id)
+            is_suc = await db.update_channel_id(id)
             if is_suc:
-                await message.reply("Successfully set movies update  channel id : " + id)
+                await message.reply("Successfully set Lecture/Documents update  channel id : " + id)
             else:
-                await message.reply("Failed to set movies update channel id : " + id)
+                await message.reply("Failed to set Lecture/Documents update channel id : " + id)
         else:
             await message.reply("Invalid channel id : " + id)
     except Exception as e:
         print('Err in set_muc_id', e)
-        await message.reply("Failed to set movies channel id! Because : " + str(e))
+        await message.reply("Failed to set Lecture/Documents channel id! Because : " + str(e))
 
