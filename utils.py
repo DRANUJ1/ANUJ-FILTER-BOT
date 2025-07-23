@@ -70,21 +70,21 @@ async def get_poster(query, bulk=False, id=False, file=None):
     if not id:
         query = (query.strip()).lower()
         title = query
-        year = re.findall(r'[1-2]\d{3}$', query, re.IGNORECASE)
-        if year:
-            year = list_to_str(year[:1])
-            title = (query.replace(year, "")).strip()
+        Chapter = re.findall(r'[1-2]\d{3}$', query, re.IGNORECASE)
+        if Chapter:
+            Chapter = list_to_str(Chapter[:1])
+            title = (query.replace(Chapter, "")).strip()
         elif file is not None:
-            year = re.findall(r'[1-2]\d{3}', file, re.IGNORECASE)
-            if year:
-                year = list_to_str(year[:1]) 
+            Chapter = re.findall(r'[1-2]\d{3}', file, re.IGNORECASE)
+            if Chapter:
+                Chapter = list_to_str(year[:1]) 
         else:
             year = None
         movieid = imdb.search_movie(title.lower(), results=10)
         if not movieid:
             return None
         if year:
-            filtered=list(filter(lambda k: str(k.get('year')) == str(year), movieid))
+            filtered=list(filter(lambda k: str(k.get('Chapter')) == str(Chapter), movieid))
             if not filtered:
                 filtered = movieid
         else:
