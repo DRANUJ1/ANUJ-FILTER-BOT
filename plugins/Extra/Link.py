@@ -6,7 +6,7 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 async def generate_link(client, message):
     command_text = message.text.split(maxsplit=1)
     if len(command_text) < 2:
-        await message.reply("Please provide the name for the movie! Example: `/link game of thrones`")
+        await message.reply("Please provide the name for the BATCH/CHAPTER! Example: `/link YAKEEN 2.0/WAVES`")
         return
     movie_name = command_text[1].replace(" ", "-")
     link = f"https://telegram.me/NehaTestBot?start=getfile-{movie_name}"
