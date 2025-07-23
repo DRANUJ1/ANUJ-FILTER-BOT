@@ -133,7 +133,7 @@ async def send_update(bot, grouping_key, files):
         for file in files:
             file_details_list.append(
                 f"• {file['content_type']} ({file['lecture_number']}) - {file['file_format']} "
-                f"<a href='https://t.me/{temp.U_NAME}?start=file_0_{file['file_id']}}'>{file['file_size']}</a>"
+                f"<a href='https://t.me/{temp.U_NAME}?start=file_0_{file['file_id']}'>{file['file_size']}</a>"
         )
         files_text = "\n".join(file_details_list)
 
