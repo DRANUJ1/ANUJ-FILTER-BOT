@@ -3,12 +3,12 @@ import asyncio
 import logging
 from info import *
 from typing import Dict, Union
-from Jisshu.bot import work_loads
+from Anuj.bot import work_loads
 from pyrogram import Client, utils, raw
 from .file_properties import get_file_ids
 from pyrogram.session import Session, Auth
 from pyrogram.errors import AuthBytesInvalid
-from Jisshu.server.exceptions import FIleNotFound
+from Anuj.server.exceptions import FIleNotFound
 from pyrogram.file_id import FileId, FileType, ThumbnailSource
 
 
@@ -58,17 +58,17 @@ class ByteStreamer:
         logging.debug(f"Cached media message with ID {id}")
         return self.cached_file_ids[id]
 
-    async def generate_media_session(self, client: Client, file_id: FileId) -> Session:
+    async def generate_anuj_session(self, client: Client, file_id: FileId) -> Session:
         """
-        Generates the media session for the DC that contains the media file.
+        Generates the anuj session for the DC that contains the media file.
         This is required for getting the bytes from Telegram servers.
         """
 
-        media_session = client.media_sessions.get(file_id.dc_id, None)
+        anuj_session = client.anuj_sessions.get(file_id.dc_id, None)
 
-        if media_session is None:
+        if anuj_session is None:
             if file_id.dc_id != await client.storage.dc_id():
-                media_session = Session(
+                anuj_session = Session(
                     client,
                     file_id.dc_id,
                     await Auth(
@@ -77,7 +77,7 @@ class ByteStreamer:
                     await client.storage.test_mode(),
                     is_media=True,
                 )
-                await media_session.start()
+                await anuj_session.start()
 
                 for _ in range(6):
                     exported_auth = await client.invoke(
@@ -85,7 +85,7 @@ class ByteStreamer:
                     )
 
                     try:
-                        await media_session.send(
+                        await anuj_session.send(
                             raw.functions.auth.ImportAuthorization(
                                 id=exported_auth.id, bytes=exported_auth.bytes
                             )
@@ -97,22 +97,22 @@ class ByteStreamer:
                         )
                         continue
                 else:
-                    await media_session.stop()
+                    await anuj_session.stop()
                     raise AuthBytesInvalid
             else:
-                media_session = Session(
+                anuj_session = Session(
                     client,
                     file_id.dc_id,
                     await client.storage.auth_key(),
                     await client.storage.test_mode(),
                     is_media=True,
                 )
-                await media_session.start()
-            logging.debug(f"Created media session for DC {file_id.dc_id}")
-            client.media_sessions[file_id.dc_id] = media_session
+                await anuj_session.start()
+            logging.debug(f"Created anuj_session session for DC {file_id.dc_id}")
+            client.anuj_sessions[file_id.dc_id] = anuj_session
         else:
-            logging.debug(f"Using cached media session for DC {file_id.dc_id}")
-        return media_session
+            logging.debug(f"Using cached anuj_session for DC {file_id.dc_id}")
+        return anuj_session
 
 
     @staticmethod
@@ -178,13 +178,13 @@ class ByteStreamer:
         client = self.client
         work_loads[index] += 1
         logging.debug(f"Starting to yielding file with client {index}.")
-        media_session = await self.generate_media_session(client, file_id)
+        anuj_session = await self.generate_anuj_session(client, file_id)
 
         current_part = 1
         location = await self.get_location(file_id)
 
         try:
-            r = await media_session.send(
+            r = await anuj_session.send(
                 raw.functions.upload.GetFile(
                     location=location, offset=offset, limit=chunk_size
                 ),
@@ -209,7 +209,7 @@ class ByteStreamer:
                     if current_part > part_count:
                         break
 
-                    r = await media_session.send(
+                    r = await anuj_session.send(
                         raw.functions.upload.GetFile(
                             location=location, offset=offset, limit=chunk_size
                         ),
