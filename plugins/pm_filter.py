@@ -23,7 +23,7 @@ from database.jsreferdb import referdb
 from database.config_db import mdb
 import logging
 from urllib.parse import quote_plus
-from Jisshu.util.file_properties import get_name, get_hash, get_media_file_size
+from Anuj.util.file_properties import get_name, get_hash, get_media_file_size
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.ERROR)
 
