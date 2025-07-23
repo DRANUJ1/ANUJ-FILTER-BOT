@@ -17,7 +17,8 @@ logging.basicConfig(
 )
 logging.getLogger("aiohttp").setLevel(logging.ERROR)
 logging.getLogger("aiohttp.web").setLevel(logging.ERROR)
-
+LOG_FILE = Path(__file__).parent / "logging.conf"
+logging.config.fileConfig(LOG_FILE)
 
 from pyrogram import Client, __version__
 from pyrogram.raw.all import layer
