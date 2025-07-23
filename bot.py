@@ -35,7 +35,7 @@ from plugins import web_server, check_expired_premium
 import pyrogram.utils
 import asyncio
 from pyrogram import idle
-from Anuj.bot import JisshuBot
+from Anuj.bot import AnujBot
 from Anuj.util.keepalive import ping_server
 from Anuj.bot.clients import initialize_clients
 
