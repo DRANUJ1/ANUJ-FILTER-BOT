@@ -28,11 +28,11 @@ USERNAME = environ.get('USERNAME', "@ANUJVIRUS") # ADMIN USERNAME
 CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '1002481896248').split()]
 
 # ForceSub Channel & Log Channels
-AUTH_CHANNEL = int(environ.get('AUTH_CHANNEL', '1002796809199'))
-AUTH_REQ_CHANNEL = int(environ.get('AUTH_REQ_CHANNEL', '1002829933094'))
+AUTH_CHANNEL = int(environ.get('AUTH_CHANNEL', '-1002796809199'))
+AUTH_REQ_CHANNEL = int(environ.get('AUTH_REQ_CHANNEL', '-1002829933094'))
 LOG_CHANNEL = int(environ.get('LOG_CHANNEL', '-1002717319391'))
-LOG_API_CHANNEL = int(environ.get('LOG_API_CHANNEL', '')) 
-LOG_VR_CHANNEL = int(environ.get('LOG_VR_CHANNEL', ''))
+LOG_API_CHANNEL = int(environ.get('LOG_API_CHANNEL', '-1002717319391')) 
+LOG_VR_CHANNEL = int(environ.get('LOG_VR_CHANNEL', '-1002717319391'))
 
 # MongoDB 
 DATABASE_URI = environ.get('DATABASE_URI', "")
@@ -43,7 +43,7 @@ FILES_DATABASE = environ.get('FILES_DATABASE', "")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'TNJCOLLECTION')
 
 # Other Channel's
-SUPPORT_GROUP = int(environ.get('SUPPORT_GROUP', '-7581094364'))
+SUPPORT_GROUP = int(environ.get('SUPPORT_GROUP', '7581094364'))
 DELETE_CHANNELS = int(environ.get('DELETE_CHANNELS','0'))
 request_channel = environ.get('REQUEST_CHANNEL', '-1002796809199') 
 REQUEST_CHANNEL = int(request_channel) if request_channel and id_pattern.search(request_channel) else None
