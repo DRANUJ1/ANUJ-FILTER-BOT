@@ -92,9 +92,9 @@ async def del_ads(client, message):
     try:
         await mdb.update_advirtisment()
         
-        current_link = await db.jisshu_get_ads_link()
+        current_link = await db.anuj_get_ads_link()
         if current_link:
-            is_deleted = await db.jisshu_del_ads_link()
+            is_deleted = await db.anuj_del_ads_link()
             if is_deleted:
                 await message.reply(f"Successfully deleted advertisement and ads photo link: {current_link}!")
             else:
