@@ -23,7 +23,7 @@ from pyrogram import Client
 from info import *
 
 
-class JisshuxBot(Client):
+class AnujxBot(Client):
 
     def __init__(self):
         super().__init__(
@@ -74,7 +74,7 @@ class JisshuxBot(Client):
                 yield message
                 current += 1
       
-JisshuBot = JisshuxBot()
+AnujBot = AnujxBot()
 
 multi_clients = {}
 work_loads = {}
