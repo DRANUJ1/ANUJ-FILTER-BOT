@@ -91,7 +91,7 @@ async def start(client:Client, message):
         buttons = [[
                            InlineKeyboardButton('⇋ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ⇋', url=f'http://telegram.dog/{temp.U_NAME}?startgroup=start')		
                         ],[
-                            InlineKeyboardButton('• ᴅɪꜱᴀʙʟᴇ ᴀᴅꜱ •', callback_data='jisshupremium'),
+                            InlineKeyboardButton('• ᴅɪꜱᴀʙʟᴇ ᴀᴅꜱ •', callback_data='TNJpremium'),
                             InlineKeyboardButton('• ꜱᴘᴇᴄɪᴀʟ •', callback_data="special")
                         ],[
                             InlineKeyboardButton("• ʜᴇʟᴘ •", callback_data='help'),
@@ -112,7 +112,7 @@ async def start(client:Client, message):
             buttons = [[
                 InlineKeyboardButton('⇋ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ⇋', url=f'http://telegram.dog/{temp.U_NAME}?startgroup=start')		
             ],[
-                InlineKeyboardButton('• ᴅɪꜱᴀʙʟᴇ ᴀᴅꜱ •', callback_data='jisshupremium'),
+                InlineKeyboardButton('• ᴅɪꜱᴀʙʟᴇ ᴀᴅꜱ •', callback_data='TNJpremium'),
                 InlineKeyboardButton('• ꜱᴘᴇᴄɪᴀʟ •', callback_data="special")
             ],[                
                 InlineKeyboardButton("• ʜᴇʟᴘ •", callback_data='help'),
@@ -132,7 +132,7 @@ async def start(client:Client, message):
             await message.reply_text("𝖨𝗇𝗏𝖺𝗅𝗂𝖽 𝖱𝖾𝖿𝖾𝗋⁉️")
             return
         if user_id == message.from_user.id:
-            await message.reply_text("𝖧𝖾𝗒 𝖣𝗎𝖽𝖾 𝖸𝗈𝗎 𝖢𝖺𝗇'𝗍 𝖱𝖾𝖿𝖾𝗋 𝖸𝗈𝗎𝗋𝗌𝖾𝗅𝖿⁉️")
+            await message.reply_text("𝖧𝖾𝗒 Goodman 𝖸𝗈𝗎 𝖢𝖺𝗇'𝗍 𝖱𝖾𝖿𝖾𝗋 𝖸𝗈𝗎𝗋𝗌𝖾𝗅𝖿⁉️")
             return
         if referdb.is_user_in_list(message.from_user.id):
             await message.reply_text("‼️ 𝖸𝗈𝗎 𝖧𝖺𝗏𝖾 𝖡𝖾𝖾𝗇 𝖠𝗅𝗅𝗋𝖾𝖺𝖽𝗒 𝖨𝗇𝗏𝗂𝗍𝖾𝖽 𝗈𝗋 𝖩𝗈𝗂𝗇𝖾𝖽")
@@ -168,14 +168,14 @@ async def start(client:Client, message):
         msg, _, impression = await mdb.get_advirtisment()
         user = await db.get_user(message.from_user.id)
         seen_ads = user.get("seen_ads", False)
-        JISSHU_ADS_LINK = await db.jisshu_get_ads_link()
+        ANUJ_ADS_LINK = await db.Anuj_get_ads_link()
         buttons = [[
                     InlineKeyboardButton('❌ ᴄʟᴏꜱᴇ ❌', callback_data='close_data')
                   ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         if msg:
             await message.reply_photo(
-                photo=JISSHU_ADS_LINK if JISSHU_ADS_LINK else URL,
+                photo=ANUJ_ADS_LINK if Anuj_ADS_LINK else URL,
                 caption=msg,
                 reply_markup=reply_markup,
                 parse_mode=enums.ParseMode.HTML
@@ -265,7 +265,7 @@ async def start(client:Client, message):
                 InlineKeyboardButton(text="✅ ᴠᴇʀɪꜰʏ ✅", url=verify),
                 InlineKeyboardButton(text="ʜᴏᴡ ᴛᴏ ᴠᴇʀɪꜰʏ❓", url=howtodownload)
                 ],[
-                InlineKeyboardButton(text="😁 ʙᴜʏ sᴜʙsᴄʀɪᴘᴛɪᴏɴ - ɴᴏ ɴᴇᴇᴅ ᴛᴏ ᴠᴇʀɪғʏ 😁", callback_data='getpremium'),
+                InlineKeyboardButton(text="🧡 ʙᴜʏ sᴜʙsᴄʀɪᴘᴛɪᴏɴ - ɴᴏ ɴᴇᴇᴅ ᴛᴏ ᴠᴇʀɪғʏ 🧡", callback_data='getpremium'),
             ]]
             reply_markup=InlineKeyboardMarkup(buttons)
             if await db.user_verified(user_id): 
@@ -943,11 +943,11 @@ async def most(client, callback_query):
 
 @Client.on_callback_query(filters.regex(r"^trending$"))
 async def top(client, query):
-    movie_series_names = await movie_series_db.get_movie_series_names(1)
-    if not movie_series_names:
+    Batch_Lecture_names = await Batch_Lecture_db.get_Batch_Lecture_names(1)
+    if not Batch_Lecture_names:
         await query.message.reply("Tʜᴇʀᴇ ᴀʀᴇ ɴᴏ ᴍᴏᴠɪᴇ ᴏʀ sᴇʀɪᴇs ɴᴀᴍᴇs ᴀᴠᴀɪʟᴀʙʟᴇ ғᴏʀ ᴛʜᴇ ᴛᴏᴘ sᴇᴀʀᴄʜᴇs.")
         return
-    buttons = [movie_series_names[i:i + 2] for i in range(0, len(movie_series_names), 2)]
+    buttons = [Batch_Lecture_names[i:i + 2] for i in range(0, len(Batch_Lecture_names), 2)]
     spika = ReplyKeyboardMarkup(
         buttons,
         resize_keyboard=True
@@ -980,7 +980,7 @@ async def set_pm_search_on(client, message):
         return
     
     await db.update_pm_search_status(bot_id, enable=True)
-    await message.reply_text("<b><i>✅️ ᴘᴍ ꜱᴇᴀʀᴄʜ ᴇɴᴀʙʟᴇᴅ, ꜰʀᴏᴍ ɴᴏᴡ ᴜꜱᴇʀꜱ ᴀʙʟᴇ ᴛᴏ ꜱᴇᴀʀᴄʜ ᴍᴏᴠɪᴇ ɪɴ ʙᴏᴛ ᴘᴍ.</i></b>")
+    await message.reply_text("<b><i>✅️ ᴘᴍ ꜱᴇᴀʀᴄʜ ᴇɴᴀʙʟᴇᴅ, ꜰʀᴏᴍ ɴᴏᴡ ᴜꜱᴇʀꜱ ᴀʙʟᴇ ᴛᴏ ꜱᴇᴀʀᴄʜ BATCH AND LECTURE ɪɴ ʙᴏᴛ ᴘᴍ.</i></b>")
 
 @Client.on_message(filters.private & filters.command("pm_search_off"))
 async def set_pm_search_off(client, message):
@@ -991,28 +991,28 @@ async def set_pm_search_off(client, message):
         return
     
     await db.update_pm_search_status(bot_id, enable=False)
-    await message.reply_text("<b><i>❌️ ᴘᴍ ꜱᴇᴀʀᴄʜ ᴅɪꜱᴀʙʟᴇᴅ, ꜰʀᴏᴍ ɴᴏᴡ ɴᴏ ᴏɴᴇ ᴄᴀɴ ᴀʙʟᴇ ᴛᴏ ꜱᴇᴀʀᴄʜ ᴍᴏᴠɪᴇ ɪɴ ʙᴏᴛ ᴘᴍ.</i></b>")
+    await message.reply_text("<b><i>❌️ ᴘᴍ ꜱᴇᴀʀᴄʜ ᴅɪꜱᴀʙʟᴇᴅ, ꜰʀᴏᴍ ɴᴏᴡ ɴᴏ ᴏɴᴇ ᴄᴀɴ ᴀʙʟᴇ ᴛᴏ ꜱᴇᴀʀᴄʜ BATCH AND LECTURE ɪɴ ʙᴏᴛ ᴘᴍ.</i></b>")
 
 
 @Client.on_message(filters.private & filters.command("movie_update_on"))
-async def set_send_movie_on(client, message):
+async def set_send_Lecture_on(client, message):
     user_id = message.from_user.id
     bot_id = client.me.id
     if user_id not in ADMINS:
         await message.delete()
         return    
-    await db.update_send_movie_update_status(bot_id, enable=True)
-    await message.reply_text("<b><i>✅️ ꜱᴇɴᴅ ᴍᴏᴠɪᴇ ᴜᴘᴅᴀᴛᴇ ᴇɴᴀʙʟᴇᴅ.</i></b>")
+    await db.update_send_update_status(bot_id, enable=True)
+    await message.reply_text("<b><i>✅️ ꜱᴇɴᴅ BATCH AND LECTURE ᴜᴘᴅᴀᴛᴇ ᴇɴᴀʙʟᴇᴅ.</i></b>")
 
-@Client.on_message(filters.private & filters.command("movie_update_off"))
-async def set_send_movie_update_off(client, message):
+@Client.on_message(filters.private & filters.command("update_off"))
+async def set_send_update_off(client, message):
     user_id = message.from_user.id
     bot_id = client.me.id
     if user_id not in ADMINS:
         await message.delete()
         return    
-    await db.update_send_movie_update_status(bot_id, enable=False)
-    await message.reply_text("<b><i>❌️ ꜱᴇɴᴅ ᴍᴏᴠɪᴇ ᴜᴘᴅᴀᴛᴇ ᴅɪꜱᴀʙʟᴇᴅ.</i></b>")
+    await db.update_send_update_status(bot_id, enable=False)
+    await message.reply_text("<b><i>❌️ ꜱᴇɴᴅ BATCH AND LECTURE ᴜᴘᴅᴀᴛᴇ ᴅɪꜱᴀʙʟᴇᴅ.</i></b>")
     
 @Client.on_message(filters.command("verifyoff") & filters.user(ADMINS))
 async def verifyoff(bot, message):
