@@ -1,7 +1,7 @@
 import jinja2
 from info import URL, LOG_CHANNEL
 from utils import temp
-from Anuj.bot import JisshuBot
+from Anuj.bot import AnujBot
 from Anuj.util.human_readable import humanbytes
 from Anuj.util.file_properties import get_file_ids
 from Anuj.server.exceptions import InvalidHash
