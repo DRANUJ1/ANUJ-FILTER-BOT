@@ -2,12 +2,12 @@ import asyncio
 import logging
 from info import *
 from pyrogram import Client
-from Jisshu.util.config_parser import TokenParser
-from . import multi_clients, work_loads, JisshuBot
+from Anuj.util.config_parser import TokenParser
+from . import multi_clients, work_loads, AnujBot
 
 
 async def initialize_clients():
-    multi_clients[0] = JisshuBot
+    multi_clients[0] = AnujBot
     work_loads[0] = 0
     all_tokens = TokenParser().parse_from_env()
     if not all_tokens:
