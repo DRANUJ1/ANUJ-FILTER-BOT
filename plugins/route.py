@@ -6,7 +6,7 @@ import secrets
 import time
 import mimetypes
 from aiohttp.http_exceptions import BadStatusLine
-from Anuj.bot import multi_clients, work_loads, JisshuBot
+from Anuj.bot import multi_clients, work_loads, AnujBot
 from Anuj.server.exceptions import FIleNotFound, InvalidHash
 from Anuj import StartTime, __version__
 from Anuj.util.custom_dl import ByteStreamer
