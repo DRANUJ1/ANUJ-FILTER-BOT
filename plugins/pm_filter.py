@@ -187,7 +187,7 @@ async def next_page(bot, query):
     if ads is not None and ads_name is not None:
         ads_url = f"https://telegram.dog/{temp.U_NAME}?start=ads"
         ads_text = f"<a href={ads_url}>{ads_name}</a>"
-    js_ads = f"\n━━━━━━━━━━━━━━━━━━\n <b>{ads_text}</b> \n━━━━━━━━━━━━━━━━━━" if ads_text else ""
+    TNJ_ads = f"\n━━━━━━━━━━━━━━━━━━\n <b>{ads_text}</b> \n━━━━━━━━━━━━━━━━━━" if ads_text else ""
     settings = await get_settings(query.message.chat.id)
     reqnxt  = query.from_user.id if query.from_user else 0
     temp.CHAT[query.from_user.id] = query.message.chat.id
@@ -249,21 +249,21 @@ async def next_page(bot, query):
         pass
     await query.answer()
     
-@Client.on_callback_query(filters.regex(r"^seasons#"))
-async def seasons_cb_handler(client: Client, query: CallbackQuery):
+@Client.on_callback_query(filters.regex(r"^lecture#"))
+async def lecture_cb_handler(client: Client, query: CallbackQuery):
     _, key, offset, req = query.data.split("#")
     if int(req) != query.from_user.id:
         return await query.answer(script.ALRT_TXT, show_alert=True) 
     btn= []
-    for i in range(0, len(SEASONS)-1, 2):
+    for i in range(0, len(lectures)-1, 2):
         btn.append([
             InlineKeyboardButton(
-                text=SEASONS[i].title(),
-                callback_data=f"season_search#{SEASONS[i].lower()}#{key}#0#{offset}#{req}"
+                text=LECTURE[i].title(),
+                callback_data=f"lecture_search#{LECTURE[i].lower()}#{key}#0#{offset}#{req}"
             ),
             InlineKeyboardButton(
-                text=SEASONS[i+1].title(),
-                callback_data=f"season_search#{SEASONS[i+1].lower()}#{key}#0#{offset}#{req}"
+                text=LECTURE[i+1].title(),
+                callback_data=f"lecture_search#{LECTURE[i+1].lower()}#{key}#0#{offset}#{req}"
             ),
         ])
 
