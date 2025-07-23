@@ -82,7 +82,7 @@ async def queue_file(bot, media):
         file_id, file_ref = unpack_new_file_id(media.file_id)
 
         # Use a unique key for grouping, e.g., based on course, subject, chapter
-        grouping_key = f{course_name}_{subject}_{chapter}"
+        grouping_key = "f{course_name}_{subject}_{chapter}"
 
         movie_files[grouping_key].append({
             "course_name": course_name,
