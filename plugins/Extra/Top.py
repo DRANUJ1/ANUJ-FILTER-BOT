@@ -14,11 +14,11 @@ async def set_movie_series_names_command(client, message):
     try:
         command, *names = message.text.split(maxsplit=1)
     except ValueError:
-        await message.reply("Pʟᴇᴀsᴇ ᴘʀᴏᴠɪᴅᴇ ᴀ ʟɪsᴛ ᴏғ ᴍᴏᴠɪᴇ ᴀɴᴅ sᴇʀɪᴇs ɴᴀᴍᴇs ᴀғᴛᴇʀ ᴛʜᴇ ᴄᴏᴍᴍᴀɴᴅ.")
+        await message.reply("Pʟᴇᴀsᴇ ᴘʀᴏᴠɪᴅᴇ ᴀ ʟɪsᴛ ᴏғ LECTURE AND DOCUMENT ɴᴀᴍᴇs ᴀғᴛᴇʀ ᴛʜᴇ ᴄᴏᴍᴍᴀɴᴅ.")
         return
 
     if not names:
-        await message.reply("Pʟᴇᴀsᴇ ᴘʀᴏᴠɪᴅᴇ ᴀ ʟɪsᴛ ᴏғ ᴍᴏᴠɪᴇ ᴀɴᴅ sᴇʀɪᴇs ɴᴀᴍᴇs ᴀғᴛᴇʀ ᴛʜᴇ ᴄᴏᴍᴍᴀɴᴅ.")
+        await message.reply("Pʟᴇᴀsᴇ ᴘʀᴏᴠɪᴅᴇ ᴀ ʟɪsᴛ ᴏғ LECTURE AND DOCUMENT ɴᴀᴍᴇs ᴀғᴛᴇʀ ᴛʜᴇ ᴄᴏᴍᴍᴀɴᴅ.")
         return
 
     names_string = " ".join(names)
@@ -27,7 +27,7 @@ async def set_movie_series_names_command(client, message):
 
     await movie_series_db.set_movie_series_names(capitalized_names, 1)
 
-    await message.reply("Tʜᴇ ʟɪsᴛ ᴏғ ᴍᴏᴠɪᴇ ᴀɴᴅ sᴇʀɪᴇs ɴᴀᴍᴇs ғᴏʀ ᴛʜᴇ sᴜɢɢᴇsᴛɪᴏɴ ʜᴀs ʙᴇᴇɴ ᴜᴘᴅᴀᴛᴇᴅ sᴜᴄᴄᴇssғᴜʟʟʏ ✅")
+    await message.reply("Tʜᴇ ʟɪsᴛ ᴏғ LECTURE AND DOCUMENT ɴᴀᴍᴇs ғᴏʀ ᴛʜᴇ sᴜɢɢᴇsᴛɪᴏɴ ʜᴀs ʙᴇᴇɴ ᴜᴘᴅᴀᴛᴇᴅ sᴜᴄᴄᴇssғᴜʟʟʏ ✅")
 
 @Client.on_message(filters.command("trendlist"))
 async def get_movie_series_names_command(client, message):
@@ -52,7 +52,7 @@ async def trending_command(client, message):
     movie_series_names = await movie_series_db.get_movie_series_names(1)
     
     if not movie_series_names:
-        await message.reply("Tʜᴇʀᴇ ᴀʀᴇ ɴᴏ ᴍᴏᴠɪᴇ ᴏʀ sᴇʀɪᴇs ɴᴀᴍᴇs ᴀᴠᴀɪʟᴀʙʟᴇ ғᴏʀ ᴛʜᴇ ᴛᴏᴘ sᴇᴀʀᴄʜᴇs.")
+        await message.reply("Tʜᴇʀᴇ ᴀʀᴇ ɴᴏ LECTURE or DOCUMENT ɴᴀᴍᴇs ᴀᴠᴀɪʟᴀʙʟᴇ ғᴏʀ ᴛʜᴇ ᴛᴏᴘ sᴇᴀʀᴄʜᴇs.")
         return
 
     buttons = [movie_series_names[i:i + 2] for i in range(0, len(movie_series_names), 2)]
