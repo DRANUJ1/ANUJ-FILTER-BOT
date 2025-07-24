@@ -55,7 +55,7 @@ async def start(client:Client, message):
             msg = script.THIRDT_VERIFY_COMPLETE_TEXT
         else:
             msg = script.SECOND_VERIFY_COMPLETE_TEXT if key == "second_time_verified" else script.VERIFY_COMPLETE_TEXT
-        if message.command[1].startswith('jisshu'):
+        if message.command[1].startswith('anuj'):
             verifiedfiles = f"https://telegram.me/{temp.U_NAME}?start=allfiles_{grp_id}_{file_id}"
         else:
             verifiedfiles = f"https://telegram.me/{temp.U_NAME}?start=file_{grp_id}_{file_id}"            
@@ -205,7 +205,7 @@ async def start(client:Client, message):
             except ChatAdminRequired:
                 logger.error("Make sure Bot is admin in Forcesub channel")
                 return
-            btn = [[
+             btn = [[
                 InlineKeyboardButton("⛔️ ᴊᴏɪɴ ɴᴏᴡ ⛔️", url=invite_link.invite_link)
             ]]
             if message.command[1] != "subscribe":
