@@ -196,8 +196,8 @@ async def start(client:Client, message):
         print(f"Group Id - {grp_id}")
     except:
         pre, grp_id, file_id = "", 0, data
-
-    settings = await get_settings(int(data.split("_", 2)[1]))
+    grp_id = int(grp_id)
+    settings = await get_settings(grp_id)
     if settings.get('fsub_id', AUTH_CHANNEL) == AUTH_REQ_CHANNEL:
         if AUTH_REQ_CHANNEL and not await is_req_subscribed(client, message):
             try:
@@ -217,7 +217,6 @@ async def start(client:Client, message):
                 reply_markup=InlineKeyboardMarkup(btn),
                 parse_mode=enums.ParseMode.HTML
             )
-            return
     else:
         id = settings.get('fsub_id', AUTH_CHANNEL)
         channel = int(id)
@@ -237,9 +236,8 @@ async def start(client:Client, message):
                 caption=script.FORCESUB_TEXT,
                 reply_markup=InlineKeyboardMarkup(btn),
                 parse_mode=enums.ParseMode.HTML
-            )
-            return        
-            
+            )        
+     
     user_id = m.from_user.id
     if not await db.has_premium_access(user_id):
         grp_id = int(grp_id)
