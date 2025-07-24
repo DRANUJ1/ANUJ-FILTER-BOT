@@ -1000,7 +1000,7 @@ async def set_pm_search_off(client, message):
     await message.reply_text("<b><i>❌️ ᴘᴍ ꜱᴇᴀʀᴄʜ ᴅɪꜱᴀʙʟᴇᴅ, ꜰʀᴏᴍ ɴᴏᴡ ɴᴏ ᴏɴᴇ ᴄᴀɴ ᴀʙʟᴇ ᴛᴏ ꜱᴇᴀʀᴄʜ MATERIALS ɪɴ ʙᴏᴛ ᴘᴍ.</i></b>")
 
 
-@Client.on_message(filters.private & filters.command("movie_update_on"))
+@Client.on_message(filters.private & filters.command("update_on"))
 async def set_send_Lecture_on(client, message):
     user_id = message.from_user.id
     bot_id = client.me.id
