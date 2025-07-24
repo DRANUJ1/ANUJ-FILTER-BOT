@@ -274,11 +274,11 @@ async def lecture_cb_handler(client: Client, query: CallbackQuery):
 @Client.on_callback_query(filters.regex(r"^lecture_search#"))
 async def lecture_search(client: Client, query: CallbackQuery):
     _, lecture, key, offset, orginal_offset, req = query.data.split("#")
-    lecture = int(lecture.split(' ' , 1)[1])
+    lecture_num = int(lecture.split(' ' , 1)[1])
     if lecture < 10:
-        lecture = f'L1{Lec}'
+        lecture = f'L1{lecture_num}'
     else:
-        lecture = f'L{Lec}'
+        lecture = f'L{lecture_num}'
     
     if int(req) != query.from_user.id:
         return await query.answer(script.ALRT_TXT, show_alert=True)	
@@ -387,7 +387,7 @@ async def chapters_cb_handler(client: Client, query: CallbackQuery):
 
 @Client.on_callback_query(filters.regex(r"^chapter_search#"))
 async def chapter_search(client: Client, query: CallbackQuery):
-    _, year, key, offset, orginal_offset, req = query.data.split("#")
+    _, chapter, key, offset, orginal_offset, req = query.data.split("#")
     if int(req) != query.from_user.id:
         return await query.answer(script.ALRT_TXT, show_alert=True)	
     offset = int(offset)
@@ -504,7 +504,7 @@ async def Batch_search(client: Client, query: CallbackQuery):
         n_offset = 0
     files = [file for file in files if re.search(batch, file.file_name, re.IGNORECASE)]
     if not files:
-        await query.answer(f"sᴏʀʀʏ BATCH {qul.title()} ɴᴏᴛ ғᴏᴜɴᴅ ғᴏʀ {search}", show_alert=1)
+        await query.answer(f"sᴏʀʀʏ BATCH {batch.title()} ɴᴏᴛ ғᴏᴜɴᴅ ғᴏʀ {search}", show_alert=1)
         return
 
     temp.FILES_ID[key] = files
@@ -598,8 +598,8 @@ async def Subject_search(client: Client, query: CallbackQuery):
         await query.answer(script.OLD_ALRT_TXT.format(query.from_user.first_name),show_alert=True)
         return 
     search = search.replace("_", " ")
-    files, n_offset, total = await get_search_results(f"{search} {Subject}", max_results=int(MAX_BTN), offset=offset)
-    files2, n_offset2, total2 = await get_search_results(f"{search} {Subject2}", max_results=int(MAX_BTN), offset=offset)
+    files, n_offset, total = await get_search_results(f"{search} {Sub}", max_results=int(MAX_BTN), offset=offset)
+    files2, n_offset2, total2 = await get_search_results(f"{search} {Sub}", max_results=int(MAX_BTN), offset=offset)
     total += total2
     try:
         n_offset = int(n_offset)
@@ -707,8 +707,8 @@ async def Type_search(client: Client, query: CallbackQuery):
         await query.answer(script.OLD_ALRT_TXT.format(query.from_user.first_name),show_alert=True)
         return 
     search = search.replace("_", " ")
-    files, n_offset, total = await get_search_results(f"{search} {type}", max_results=int(MAX_BTN), offset=offset)
-    files2, n_offset2, total2 = await get_search_results(f"{search} {type2}", max_results=int(MAX_BTN), offset=offset)
+    files, n_offset, total = await get_search_results(f"{search} {Type}", max_results=int(MAX_BTN), offset=offset)
+    files2, n_offset2, total2 = await get_search_results(f"{search} {Type2}", max_results=int(MAX_BTN), offset=offset)
     total += total2
     try:
         n_offset = int(n_offset)
