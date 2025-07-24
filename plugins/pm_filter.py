@@ -921,7 +921,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         buttons = [[		
                 InlineKeyboardButton('⇋ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ⇋', url=f'http://telegram.dog/{temp.U_NAME}?startgroup=start')		
 		],[
-		InlineKeyboardButton('• ᴅɪꜱᴀʙʟᴇ ᴀᴅꜱ •', callback_data='jisshupremium'),
+		InlineKeyboardButton('• ᴅɪꜱᴀʙʟᴇ ᴀᴅꜱ •', callback_data='Anujpremium'),
                 InlineKeyboardButton('• ꜱᴘᴇᴄɪᴀʟ •', callback_data="special")
                 ],[
                 InlineKeyboardButton("• ʜᴇʟᴘ •", callback_data='help'),
@@ -944,7 +944,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
 #            parse_mode=enums.ParseMode.HTML
 #        )
 
-    elif query.data == "TNJpremium":
+    elif query.data == "Anujpremium":
         btn = [[
                 InlineKeyboardButton('ʙᴜʏ ᴘʀᴇᴍɪᴜᴍ', callback_data='seeplans'),
                 InlineKeyboardButton('ʀᴇꜰᴇʀ & ᴇᴀʀɴ', callback_data="reffff")
@@ -1098,7 +1098,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 ),
             disable_web_page_preview = True
 	)
-    elif query.data == "for you":
+    elif query.data == "foryou":
         await query.answer("❤️ A Big Thank To All For Joining This Bot!🎁🎪", show_alert=True)
  
     elif query.data == "source":
