@@ -205,7 +205,7 @@ async def start(client:Client, message):
             except ChatAdminRequired:
                 logger.error("Make sure Bot is admin in Forcesub channel")
                 return
-           btn = [[
+            btn = [[
         InlineKeyboardButton("⛔️ ᴊᴏɪɴ ɴᴏᴡ ⛔️", url=invite_link.invite_link)
            ]]
             if message.command[1] != "subscribe":
