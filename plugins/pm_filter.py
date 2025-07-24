@@ -239,7 +239,7 @@ async def next_page(bot, query):
         links = ""
         for file_num, file in enumerate(files, start=offset+1):
             links += f"""<b>\n\n{file_num}. <a href=https://telegram.dog/{temp.U_NAME}?start=file_{query.message.chat.id}_{file.file_id}>[{get_size(file.file_size)}] {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}</a></b>"""
-        await query.message.edit_text(cap + links + js_ads, disable_web_page_preview=True, parse_mode=enums.ParseMode.HTML, reply_markup=InlineKeyboardMarkup(btn))
+        await query.message.edit_text(cap + links + TNJ_ads, disable_web_page_preview=True, parse_mode=enums.ParseMode.HTML, reply_markup=InlineKeyboardMarkup(btn))
         return        
     try:
         await query.edit_message_reply_markup(
@@ -416,7 +416,7 @@ async def chapter_search(client: Client, query: CallbackQuery):
     if ads is not None and ads_name is not None:
         ads_url = f"https://telegram.dog/{temp.U_NAME}?start=ads"
         ads_text = f"<a href={ads_url}>{ads_name}</a>"
-    js_ads = f"\n━━━━━━━━━━━━━━━━━━\n <b>{ads_text}</b> \n━━━━━━━━━━━━━━━━━━" if ads_text else ""
+    TNJ_ads = f"\n━━━━━━━━━━━━━━━━━━\n <b>{ads_text}</b> \n━━━━━━━━━━━━━━━━━━" if ads_text else ""
     links = ""
     if settings["link"]:
         btn = []
@@ -1090,7 +1090,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 [[
 			InlineKeyboardButton('‼️ ᴅɪꜱᴄʟᴀɪᴍᴇʀ ‼️', callback_data='disclaimer')
 		],[
-			InlineKeyboardButton('MAKE OWN BOT', callback_data='source'),
+			InlineKeyboardButton('MAKE OWN BOT', callback_data='makeownbot'),
                         InlineKeyboardButton('ONLY FOR YOU',callback_data='foryou')
 		],[
 			InlineKeyboardButton('⋞ ʜᴏᴍᴇ', callback_data='start')]]
@@ -1100,7 +1100,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data == "foryou":
         await query.answer("❤️ A Big Thank To All For Joining This Bot!🎁🎪", show_alert=True)
  
-    elif query.data == "source":
+    elif query.data == "makeownbot":
         buttons = [[
             InlineKeyboardButton('Join For Custom BOT', Url='https://t.me/+7lWTaGEdKfI5ZDdl')
         ],[
@@ -1422,12 +1422,12 @@ async def cb_handler(client: Client, query: CallbackQuery):
         else:
             await query.answer(script.ALRT_TXT, show_alert=True)
 
-    elif query.data.startswith("year"):
+    elif query.data.startswith("lecture"):
         ident, user_id, msg_id = query.data.split("#")
         chnl_id = query.message.chat.id
         userid = query.from_user.id
         buttons = [[
-            InlineKeyboardButton("⚠️ ᴛᴇʟʟ ᴍᴇ BATCH & LECTURE ⚠️", callback_data=f"lec_alert#{user_id}")
+            InlineKeyboardButton("⚠️ ᴛᴇʟʟ ᴍᴇ BATCH & LECTURE ⚠️", callback_data=f"lecture_alert#{user_id}")
         ]]
         btn = [[
             InlineKeyboardButton("♻️ ᴠɪᴇᴡ sᴛᴀᴛᴜs ♻️", url=f"{query.message.link}")
@@ -1494,7 +1494,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         else:
             await query.answer(script.ALRT_TXT, show_alert=True)
 
-    elif query.data.startswith("batchfiles"):
+    elif query.data.startswith("allfiles"):
         ident, group_id, message_id, user = query.data.split("#")
         group_id = int(group_id)
         message_id = int(message_id)
