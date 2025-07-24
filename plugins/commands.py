@@ -810,7 +810,7 @@ async def set_log(client, message):
     await save_group_settings(grp_id, 'log', log)
     await message.reply_text(f"<b>✅ sᴜᴄᴄᴇssꜰᴜʟʟʏ sᴇᴛ ʏᴏᴜʀ ʟᴏɢ ᴄʜᴀɴɴᴇʟ ꜰᴏʀ {title}\n\nɪᴅ `{log}`</b>", disable_web_page_preview=True)
     user_id = m.from_user.id
-    user_info = f"@{m.from_user.username}" if m.from_user.username else f"{m.from_user.mention}"
+    user_info = f"@{message.from_user.username}" if m.from_user.username else f"{message.from_user.mention}"
     link = (await client.get_chat(message.chat.id)).invite_link
     grp_link = f"[{message.chat.title}]({link})"
     log_message = f"#New_Log_Channel_Set\n\nName - {user_info}\nId - `{user_id}`\n\nLog channel id - `{log}`\nGroup link - {grp_link}"
@@ -887,7 +887,7 @@ async def set_time_2(client, message):
     except:
         return await message.reply_text("Command Incomplete!")   
     await save_group_settings(grp_id, 'verify_time', time)
-    await message.reply_text(f"Successfully set 1st verify time for {title}\n\nTime is - <code>{time}</code>")
+    await message.reply_text(f"Successfully set 2st verify time for {title}\n\nTime is - <code>{time}</code>")
 
 @Client.on_message(filters.command('set_time_3'))
 async def set_time_3(client, message):
@@ -906,7 +906,7 @@ async def set_time_3(client, message):
     except:
         return await message.reply_text("Command Incomplete!")   
     await save_group_settings(grp_id, 'third_verify_time', time)
-    await message.reply_text(f"Successfully set 1st verify time for {title}\n\nTime is - <code>{time}</code>")
+    await message.reply_text(f"Successfully set 3st verify time for {title}\n\nTime is - <code>{time}</code>")
 
 
 @Client.on_callback_query(filters.regex("mostsearch"))
@@ -943,9 +943,9 @@ async def most(client, callback_query):
 
 @Client.on_callback_query(filters.regex(r"^trending$"))
 async def top(client, query):
-    Batch_Lecture_names = await Batch_Lecture_db.get_Batch_Lecture_names(1)
+    Batch_Lecture_names = await Batch_Lecture_db.get_movie_series_names(1)
     if not Batch_Lecture_names:
-        await query.message.reply("Tʜᴇʀᴇ ᴀʀᴇ ɴᴏ ᴍᴏᴠɪᴇ ᴏʀ sᴇʀɪᴇs ɴᴀᴍᴇs ᴀᴠᴀɪʟᴀʙʟᴇ ғᴏʀ ᴛʜᴇ ᴛᴏᴘ sᴇᴀʀᴄʜᴇs.")
+        await query.message.reply("Tʜᴇʀᴇ ᴀʀᴇ ɴᴏ MATERIALS ɴᴀᴍᴇs ᴀᴠᴀɪʟᴀʙʟᴇ ғᴏʀ ᴛʜᴇ ᴛᴏᴘ sᴇᴀʀᴄʜᴇs.")
         return
     buttons = [Batch_Lecture_names[i:i + 2] for i in range(0, len(Batch_Lecture_names), 2)]
     spika = ReplyKeyboardMarkup(
@@ -980,7 +980,7 @@ async def set_pm_search_on(client, message):
         return
     
     await db.update_pm_search_status(bot_id, enable=True)
-    await message.reply_text("<b><i>✅️ ᴘᴍ ꜱᴇᴀʀᴄʜ ᴇɴᴀʙʟᴇᴅ, ꜰʀᴏᴍ ɴᴏᴡ ᴜꜱᴇʀꜱ ᴀʙʟᴇ ᴛᴏ ꜱᴇᴀʀᴄʜ BATCH AND LECTURE ɪɴ ʙᴏᴛ ᴘᴍ.</i></b>")
+    await message.reply_text("<b><i>✅️ ᴘᴍ ꜱᴇᴀʀᴄʜ ᴇɴᴀʙʟᴇᴅ, ꜰʀᴏᴍ ɴᴏᴡ ᴜꜱᴇʀꜱ ᴀʙʟᴇ ᴛᴏ ꜱᴇᴀʀᴄʜ MATERIALS ɪɴ ʙᴏᴛ ᴘᴍ.</i></b>")
 
 @Client.on_message(filters.private & filters.command("pm_search_off"))
 async def set_pm_search_off(client, message):
@@ -991,7 +991,7 @@ async def set_pm_search_off(client, message):
         return
     
     await db.update_pm_search_status(bot_id, enable=False)
-    await message.reply_text("<b><i>❌️ ᴘᴍ ꜱᴇᴀʀᴄʜ ᴅɪꜱᴀʙʟᴇᴅ, ꜰʀᴏᴍ ɴᴏᴡ ɴᴏ ᴏɴᴇ ᴄᴀɴ ᴀʙʟᴇ ᴛᴏ ꜱᴇᴀʀᴄʜ BATCH AND LECTURE ɪɴ ʙᴏᴛ ᴘᴍ.</i></b>")
+    await message.reply_text("<b><i>❌️ ᴘᴍ ꜱᴇᴀʀᴄʜ ᴅɪꜱᴀʙʟᴇᴅ, ꜰʀᴏᴍ ɴᴏᴡ ɴᴏ ᴏɴᴇ ᴄᴀɴ ᴀʙʟᴇ ᴛᴏ ꜱᴇᴀʀᴄʜ MATERIALS ɪɴ ʙᴏᴛ ᴘᴍ.</i></b>")
 
 
 @Client.on_message(filters.private & filters.command("movie_update_on"))
