@@ -217,6 +217,7 @@ async def start(client:Client, message):
                 reply_markup=InlineKeyboardMarkup(btn),
                 parse_mode=enums.ParseMode.HTML
             )
+         return
     else:
         id = settings.get('fsub_id', AUTH_CHANNEL)
         channel = int(id)
@@ -237,6 +238,7 @@ async def start(client:Client, message):
                 reply_markup=InlineKeyboardMarkup(btn),
                 parse_mode=enums.ParseMode.HTML
             )
+          return
     user_id = m.from_user.id
     if not await db.has_premium_access(user_id):
         grp_id = int(grp_id)
@@ -756,7 +758,7 @@ async def set_shortner_3(c, m):
     try:
         URL = m.command[1]
         API = m.command[2]
-        resp = requests.get(f'https://{URL}/api?api={API}&url=https://t.me/+BJfqwUjbkQFmNTU1').json()
+        resp = requests.get(f'https://{URL}/api?api={API}&url=https://t.me/+7UDh6N9ULRs1MDE1').json()
         if resp['status'] == 'success':
             SHORT_LINK = resp['shortenedUrl']
         await save_group_settings(grp_id, 'shortner_three', URL)
