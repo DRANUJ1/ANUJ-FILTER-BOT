@@ -65,7 +65,7 @@ async def group_search(client, message):
                 return
         except Exception as e:
             print(f"{e}")
-            await bot.send_message(LOG_CHANNEL, f'Error - {e}')
+            await client.send_message(LOG_CHANNEL, f'Error - {e}')
     if settings["auto_filter"]:
         if not user_id:
             return
@@ -455,7 +455,7 @@ async def chapter_search(client: Client, query: CallbackQuery):
              InlineKeyboardButton("ɴᴇxᴛ ⋟", callback_data=f"chapter_search#{chapter}#{key}#{n_offset}#{orginal_offset}#{req}"),])
     else:
         btn.append(
-            [InlineKeyboardButton("⋞ ʙᴀᴄᴋ", callback_data=f"chapter_search#{year}#{key}#{offset- int(MAX_BTN)}#{orginal_offset}#{req}"),
+            [InlineKeyboardButton("⋞ ʙᴀᴄᴋ", callback_data=f"chapter_search#{chapter}#{key}#{offset- int(MAX_BTN)}#{orginal_offset}#{req}"),
              InlineKeyboardButton(f"{math.ceil(offset / int(MAX_BTN)) + 1}/{math.ceil(total / int(MAX_BTN))}", callback_data="pages",),
              InlineKeyboardButton("ɴᴇxᴛ ⋟", callback_data=f"chapter_search#{chapter}#{key}#{n_offset}#{orginal_offset}#{req}"),])
 
@@ -573,8 +573,8 @@ async def Subject_cb_handler(client: Client, query: CallbackQuery):
     for i in range(0, len(SUBJECT)-1, 2):
         btn.append([
             InlineKeyboardButton(
-                text=SUBJECTS[i].title(),
-                callback_data=f"Sub_search#{SUBJECTS[i].lower()}#{key}#0#{offset}#{req}"
+                text=SUBJECT[i].title(),
+                callback_data=f"Sub_search#{SUBJECT[i].lower()}#{key}#0#{offset}#{req}"
             ),
             InlineKeyboardButton(
                 text=SUBJECT[i+1].title(),
@@ -682,8 +682,8 @@ async def Type_cb_handler(client: Client, query: CallbackQuery):
     for i in range(0, len(TYPES)-1, 2):
         btn.append([
             InlineKeyboardButton(
-                text=TYPES[i].title(),
-                callback_data=f"Sub_search#{TYPES[i].lower()}#{key}#0#{offset}#{req}"
+                text=TYPE[i].title(),
+                callback_data=f"Sub_search#{TYPE[i].lower()}#{key}#0#{offset}#{req}"
             ),
             InlineKeyboardButton(
                 text=TYPE[i+1].title(),
@@ -1753,9 +1753,9 @@ async def advantage_spell_chok(message):
         return
     user = message.from_user.id if message.from_user else 0
     buttons = [[
-        InlineKeyboardButton(text=lecture.get('title'), callback_data=f"spol#{lecture.lectureID}#{user}")
+        InlineKeyboardButton(text=lecture.get('title'), callback_data=f"spol#{movie.movieid}#{user}")
     ]
-        for lecture in lecture
+        for movie in movie
     ]
     buttons.append(
         [InlineKeyboardButton(text="🚫 ᴄʟᴏsᴇ 🚫", callback_data='close_data')]
