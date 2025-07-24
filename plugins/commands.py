@@ -217,7 +217,6 @@ async def start(client:Client, message):
                 reply_markup=InlineKeyboardMarkup(btn),
                 parse_mode=enums.ParseMode.HTML
             )
-        return
     else:
         id = settings.get('fsub_id', AUTH_CHANNEL)
         channel = int(id)
@@ -237,8 +236,7 @@ async def start(client:Client, message):
                 caption=script.FORCESUB_TEXT,
                 reply_markup=InlineKeyboardMarkup(btn),
                 parse_mode=enums.ParseMode.HTML
-            )        
-        return
+            )
     user_id = m.from_user.id
     if not await db.has_premium_access(user_id):
         grp_id = int(grp_id)
