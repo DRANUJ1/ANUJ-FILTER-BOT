@@ -691,7 +691,7 @@ async def set_shortner(c, m):
         await save_group_settings(grp_id, 'api', API)
         await m.reply_text(f"<b><u>✓ sᴜᴄᴄᴇssꜰᴜʟʟʏ ʏᴏᴜʀ sʜᴏʀᴛɴᴇʀ ɪs ᴀᴅᴅᴇᴅ</u>\n\nᴅᴇᴍᴏ - {SHORT_LINK}\n\nsɪᴛᴇ - `{URL}`\n\nᴀᴘɪ - `{API}`</b>", quote=True)
         user_id = m.from_user.id
-        user_info = f"@{m.from_user.username}" if m.from_user.username else f"{m.from_user.mention}"
+        user_info = f"@{message.from_user.username}" if message.from_user.username else f"{message.from_user.mention}"
         link = (await c.get_chat(m.chat.id)).invite_link
         grp_link = f"[{m.chat.title}]({link})"
         log_message = f"#New_Shortner_Set_For_1st_Verify\n\nName - {user_info}\nId - `{user_id}`\n\nDomain name - {URL}\nApi - `{API}`\nGroup link - {grp_link}"
@@ -885,7 +885,7 @@ async def set_time_2(client, message):
     except:
         return await message.reply_text("Command Incomplete!")   
     await save_group_settings(grp_id, 'verify_time', time)
-    await message.reply_text(f"Successfully set 2st verify time for {title}\n\nTime is - <code>{time}</code>")
+    await message.reply_text(f"Successfully set 2nd verify time for {title}\n\nTime is - <code>{time}</code>")
 
 @Client.on_message(filters.command('set_time_3'))
 async def set_time_3(client, message):
@@ -904,7 +904,7 @@ async def set_time_3(client, message):
     except:
         return await message.reply_text("Command Incomplete!")   
     await save_group_settings(grp_id, 'third_verify_time', time)
-    await message.reply_text(f"Successfully set 3st verify time for {title}\n\nTime is - <code>{time}</code>")
+    await message.reply_text(f"Successfully set 3rd verify time for {title}\n\nTime is - <code>{time}</code>")
 
 
 @Client.on_callback_query(filters.regex("mostsearch"))
@@ -939,19 +939,26 @@ async def most(client, callback_query):
     await callback_query.answer()
 
 
+# Is poore function ko isse replace karein:
 @Client.on_callback_query(filters.regex(r"^trending$"))
 async def top(client, query):
-    Batch_Lecture_names = await Batch_Lecture_db.get_movie_series_names(1)
-    if not Batch_Lecture_names:
-        await query.message.reply("Tʜᴇʀᴇ ᴀʀᴇ ɴᴏ MATERIALS ɴᴀᴍᴇs ᴀᴠᴀɪʟᴀʙʟᴇ ғᴏʀ ᴛʜᴇ ᴛᴏᴘ sᴇᴀʀᴄʜᴇs.")
+    # Top searches mdb se aati hain
+    top_searches = await mdb.get_top_messages(limit=10)
+    if not top_searches:
+        await query.message.reply("Abhi koi trending search uplabdh nahi hai.")
         return
-    buttons = [Batch_Lecture_names[i:i + 2] for i in range(0, len(Batch_Lecture_names), 2)]
+    
+    # Har search ka ek alag button banayein
+    buttons = [[search] for search in top_searches]
     spika = ReplyKeyboardMarkup(
         buttons,
-        resize_keyboard=True
+        resize_keyboard=True,
+        one_time_keyboard=True,
+        placeholder="Click to search trending topics"
     )
     await query.message.reply("<b>Here Is The Top Trending List 👇</b>", reply_markup=spika)
-    
+    await query.answer()
+
 @Client.on_message(filters.command("refer"))
 async def refer(bot, message):
     btn = [[
