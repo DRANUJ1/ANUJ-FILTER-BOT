@@ -273,12 +273,12 @@ async def lecture_cb_handler(client: Client, query: CallbackQuery):
 
 @Client.on_callback_query(filters.regex(r"^lecture_search#"))
 async def lecture_search(client: Client, query: CallbackQuery):
-    _, season, key, offset, orginal_offset, req = query.data.split("#")
-    seas = int(lecture.split(' ' , 1)[1])
-    if seas < 10:
-        seas = f'L1{Lec}'
+    _, lecture, key, offset, orginal_offset, req = query.data.split("#")
+    lecture = int(lecture.split(' ' , 1)[1])
+    if lecture < 10:
+        lecture = f'L1{Lec}'
     else:
-        seas = f'L{Lec}'
+        lecture = f'L{Lec}'
     
     if int(req) != query.from_user.id:
         return await query.answer(script.ALRT_TXT, show_alert=True)	
@@ -289,7 +289,7 @@ async def lecture_search(client: Client, query: CallbackQuery):
         await query.answer(script.OLD_ALRT_TXT.format(query.from_user.first_name),show_alert=True)
         return 
     search = search.replace("_", " ")
-    files, n_offset, total = await get_search_results(f"{search} {lec}", max_results=int(MAX_BTN), offset=offset)
+    files, n_offset, total = await get_search_results(f"{search} {lecture}", max_results=int(MAX_BTN), offset=offset)
     files2, n_offset2, total2 = await get_search_results(f"{search} {lecture}", max_results=int(MAX_BTN), offset=offset)
     total += total2
     try:
@@ -299,12 +299,12 @@ async def lecture_search(client: Client, query: CallbackQuery):
             n_offset = int(n_offset2)
         except : 
             n_offset = 0
-    files = [file for file in files if re.search(seas, file.file_name, re.IGNORECASE)]
+    files = [file for file in files if re.search(lecture, file.file_name, re.IGNORECASE)]
     
     if not files:
-        files = [file for file in files2 if re.search(season, file.file_name, re.IGNORECASE)]
+        files = [file for file in files2 if re.search(lecture, file.file_name, re.IGNORECASE)]
         if not files:
-            await query.answer(f"sᴏʀʀʏ {season.title()} ɴᴏᴛ ғᴏᴜɴᴅ ғᴏʀ {search}", show_alert=1)
+            await query.answer(f"sᴏʀʀʏ {lecture.title()} ɴᴏᴛ ғᴏᴜɴᴅ ғᴏʀ {search}", show_alert=1)
             return
 
     temp.FILES_ID[key] = files
@@ -487,7 +487,7 @@ async def Batch_cb_handler(client: Client, query: CallbackQuery):
 
 @Client.on_callback_query(filters.regex(r"^Batch_search#"))
 async def Batch_search(client: Client, query: CallbackQuery):
-    _, qul, key, offset, orginal_offset, req = query.data.split("#")
+    _, batch, key, offset, orginal_offset, req = query.data.split("#")
     if int(req) != query.from_user.id:
         return await query.answer(script.ALRT_TXT, show_alert=True)	
     offset = int(offset)
@@ -497,12 +497,12 @@ async def Batch_search(client: Client, query: CallbackQuery):
         await query.answer(script.OLD_ALRT_TXT.format(query.from_user.first_name),show_alert=True)
         return 
     search = search.replace("_", " ")
-    files, n_offset, total = await get_search_results(f"{search} {qul}", max_results=int(MAX_BTN), offset=offset)
+    files, n_offset, total = await get_search_results(f"{search} {batch}", max_results=int(MAX_BTN), offset=offset)
     try:
         n_offset = int(n_offset)
     except:
         n_offset = 0
-    files = [file for file in files if re.search(qul, file.file_name, re.IGNORECASE)]
+    files = [file for file in files if re.search(batch, file.file_name, re.IGNORECASE)]
     if not files:
         await query.answer(f"sᴏʀʀʏ BATCH {qul.title()} ɴᴏᴛ ғᴏᴜɴᴅ ғᴏʀ {search}", show_alert=1)
         return
@@ -554,7 +554,7 @@ async def Batch_search(client: Client, query: CallbackQuery):
              InlineKeyboardButton("ɴᴇxᴛ ⋟", callback_data=f"batch_search#{batch}#{key}#{n_offset}#{orginal_offset}#{req}"),])
     else:
         btn.append(
-            [InlineKeyboardButton("⋞ ʙᴀᴄᴋ", callback_data=f"quality_search#{batch}#{key}#{offset- int(MAX_BTN)}#{orginal_offset}#{req}"),
+            [InlineKeyboardButton("⋞ ʙᴀᴄᴋ", callback_data=f"batch_search#{batch}#{key}#{offset- int(MAX_BTN)}#{orginal_offset}#{req}"),
              InlineKeyboardButton(f"{math.ceil(offset / int(MAX_BTN)) + 1}/{math.ceil(total / int(MAX_BTN))}", callback_data="pages",),
              InlineKeyboardButton("ɴᴇxᴛ ⋟", callback_data=f"batch_search#{batch}#{key}#{n_offset}#{orginal_offset}#{req}"),])
 
@@ -587,7 +587,7 @@ async def Subject_cb_handler(client: Client, query: CallbackQuery):
 
 @Client.on_callback_query(filters.regex(r"^Subject_search#"))
 async def Subject_search(client: Client, query: CallbackQuery):
-    _, lang, key, offset, orginal_offset, req = query.data.split("#")
+    _, sub, key, offset, orginal_offset, req = query.data.split("#")
     sub2 = sub[:3]
     if int(req) != query.from_user.id:
         return await query.answer(script.ALRT_TXT, show_alert=True)	
@@ -696,7 +696,7 @@ async def Type_cb_handler(client: Client, query: CallbackQuery):
 
 @Client.on_callback_query(filters.regex(r"^Type_search#"))
 async def Type_search(client: Client, query: CallbackQuery):
-    _, lang, key, offset, orginal_offset, req = query.data.split("#")
+    _, Type, key, offset, orginal_offset, req = query.data.split("#")
     type2 = type[:3]
     if int(req) != query.from_user.id:
         return await query.answer(script.ALRT_TXT, show_alert=True)	
