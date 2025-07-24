@@ -930,21 +930,20 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 InlineKeyboardButton('• ᴇᴀʀɴ ᴜɴʟɪᴍɪᴛᴇᴅ ᴍᴏɴᴇʏ ᴡɪᴛʜ ʙᴏᴛ •', callback_data='earn')
 	        ]] 
         reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_media(
-            media=InputMediaPhoto(
-            media=random.choice(START_IMG),
+        await client.send_photo(
+            chat_id=query.message.chat.id,
+            photo=random.choice(START_IMG),
             caption=script.START_TXT.format(query.from_user.mention, get_status(), query.from_user.id),
-            parse_mode=enums.ParseMode.HTML 
-            ),
-            reply_markup=reply_markup
-	)
+            reply_markup=reply_markup,
+            parse_mode=enums.ParseMode.HTML
+        )
 #        await query.message.edit_text(
 #            text=script.START_TXT.format(query.from_user.mention, get_status(), query.from_user.id),
 #            reply_markup=reply_markup,
 #            parse_mode=enums.ParseMode.HTML
 #        )
 
-    elif query.data == "Anujpremium":
+    elif query.data == "TNJpremium":
         btn = [[
                 InlineKeyboardButton('ʙᴜʏ ᴘʀᴇᴍɪᴜᴍ', callback_data='seeplans'),
                 InlineKeyboardButton('ʀᴇꜰᴇʀ & ᴇᴀʀɴ', callback_data="reffff")
